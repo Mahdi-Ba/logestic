@@ -50,6 +50,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'TIME_ZONE': 'Asia/Tehran',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 20,
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
 ROOT_URLCONF = 'tboof.urls'
 
 TEMPLATES = [
@@ -98,6 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
