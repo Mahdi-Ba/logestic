@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -17,6 +16,7 @@ from apps.general.models import Country, State, City, Address
 #
 #     def __str__(self):
 #         return self.title
+from apps.users.models import User
 
 
 class Category(models.Model):
