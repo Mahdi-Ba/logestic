@@ -1,4 +1,4 @@
-from ..models import User
+from apps.users.models import *
 from rest_framework import serializers
 
 
