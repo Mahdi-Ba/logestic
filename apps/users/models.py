@@ -1,4 +1,7 @@
+from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+
+from apps.general.models import Address
 
 
 class UserManager(BaseUserManager):
@@ -31,3 +34,75 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     """User model."""
     objects = UserManager()
+
+
+class Status(models.Model):
+    title = models.CharField(unique=True, null=False, max_length=250)
+
+    def __str__(self):
+        return self.title
+
+
+class CarrierCategory(models.Model):
+    title = models.CharField(unique=True, null=False, max_length=250)
+
+    def __str__(self):
+        return self.title
+
+
+class Client(models.Model):
+    first_name = models.CharField(unique=True, null=False, max_length=250)
+    last_name = models.CharField(unique=True, null=False, max_length=250)
+    phone_number = models.CharField(unique=True, null=False, max_length=250)
+    national_id = models.CharField(unique=True, null=False, max_length=250)
+    birthday = models.CharField(unique=True, null=False, max_length=250)
+    address_alias = models.CharField(unique=True, null=False, max_length=250)
+    address = models.ForeignKey(Address, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.title
+
+
+class Carrier(models.Model):
+    first_name = models.CharField(unique=True, null=False, max_length=250)
+    last_name = models.CharField(unique=True, null=False, max_length=250)
+    phone_number = models.CharField(unique=True, null=False, max_length=250)
+    national_id = models.CharField(unique=True, null=False, max_length=250)
+    birthday = models.CharField(unique=True, null=False, max_length=250)
+    address_alias = models.CharField(unique=True, null=False, max_length=250)
+    address = models.ForeignKey(Address, null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(CarrierCategory, null=True, on_delete=models.SET_NULL)
+    vehicle_id = models.CharField(unique=True, null=False, max_length=250)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.title
+
+
+class Organization(models.Model):
+    name = models.CharField(unique=True, null=False, max_length=250)
+    phone_number = models.CharField(unique=True, null=False, max_length=250)
+    national_id = models.CharField(unique=True, null=False, max_length=250)
+    address_alias = models.CharField(unique=True, null=False, max_length=250)
+    address = models.ForeignKey(Address, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.title
+
+
+class Employee(models.Model):
+    first_name = models.CharField(unique=True, null=False, max_length=250)
+    last_name = models.CharField(unique=True, null=False, max_length=250)
+    phone_number = models.CharField(unique=True, null=False, max_length=250)
+    national_id = models.CharField(unique=True, null=False, max_length=250)
+    company_id = models.CharField(unique=True, null=False, max_length=250)
+    position = models.CharField(unique=True, null=False, max_length=250)
+    birthday = models.CharField(unique=True, null=False, max_length=250)
+    address_alias = models.CharField(unique=True, null=False, max_length=250)
+    address = models.ForeignKey(Address, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.title
