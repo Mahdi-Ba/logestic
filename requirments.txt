@@ -1,7 +1,8 @@
-asgiref==3.4.1
-backports.zoneinfo==0.2.1
-Django==4.0
-djangorestframework==3.12.4
-djangorestframework-jwt==1.11.0
-PyJWT==1.7.1
-sqlparse==0.4.2
+asgiref
+backports.zoneinfo
+Django
+djangorestframework
+djangorestframework-jwt
+PyJWT
+sqlparse
+celery
