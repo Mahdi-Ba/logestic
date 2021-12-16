@@ -1,7 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from apps.generals.models import Vehicle
+
 
 
 class UserManager(BaseUserManager):
@@ -84,7 +84,6 @@ class Carrier(models.Model):
     birthday = models.CharField(unique=True, null=False, max_length=250)
     address_alias = models.CharField(unique=True, null=False, max_length=250)
     category = models.ForeignKey(CarrierCategory, null=True, on_delete=models.SET_NULL)
-    vehicle = models.ForeignKey(Vehicle, null=True, on_delete=models.SET_NULL)
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
