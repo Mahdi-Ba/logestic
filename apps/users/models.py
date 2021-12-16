@@ -83,7 +83,6 @@ class Carrier(models.Model):
     birthday = models.CharField(unique=True, null=False, max_length=250)
     address_alias = models.CharField(unique=True, null=False, max_length=250)
     category = models.ForeignKey(CarrierCategory, null=True, on_delete=models.SET_NULL)
-    vehicle_id = models.CharField(unique=True, null=False, max_length=250)
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):

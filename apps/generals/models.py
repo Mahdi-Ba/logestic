@@ -35,7 +35,13 @@ class Address(models.Model):
     house_number = models.CharField(null=False, max_length=32)
     address = models.CharField(null=False, max_length=32)
     phone = models.CharField(null=True, max_length=32)
-    user = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.address
+
+
+class Vehicle(models.Model):
+    number = models.CharField(null=False, max_length=32)
+    color = models.CharField(null=False, max_length=32)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
